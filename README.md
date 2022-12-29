@@ -13,7 +13,7 @@ This function allows you to gradually change a value to a target value in given 
 + ➖Works with both negative and positive numbers➕
 
 ## Initialization 💻
-+ Add this script to your assets or copy the code and create a new script with name of "GraduallyChange" and copy the entire code.
++ Add this script to your assets or copy the code and create a new script with name of "GraduallyChange" and paste the entire code.
 
 ## How to use ❓
 + Open a script where you want to change number
