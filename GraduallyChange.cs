@@ -6,7 +6,7 @@ public static class GraduallyChange
     /// <param name="to">Target value.</param>
     /// <param name="duration">How long it will take start value to reach target value? In seconds.</param>
     /// <param name="isSmooth">Should interpolation be smooth?</param>
-    /// <param name="onComplete">Function when interpolation completed.</param>
+    /// <param name="onComplete">Function to run when interpolation completed.</param>
     public static System.Collections.IEnumerator To(System.Func<float> from, System.Action<float> callback, float to, float duration, bool isSmooth = false, System.Action onComplete = null)
     {
         var t = 0f;
