@@ -10,6 +10,7 @@ This function allows you to gradually change a value to a target value in given 
 + ➰Smoothing
 + 7️⃣Setting duration
 + 🙂Use with/without Update function!
++ ➖Works with both negative and positive numbers➕
 
 ## Initialization 💻
 + Add this script to your assets or copy the code and create a new script with name of "GraduallyChange".
