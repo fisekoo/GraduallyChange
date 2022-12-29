@@ -1,5 +1,5 @@
 # 📐GraduallyChange
-Gradually change a number to target number
+Gradually change a value to target value
 
 ![changingGif](https://user-images.githubusercontent.com/82342866/210013560-c9e7e46d-f719-4893-9111-395deded4b10.gif)
 
