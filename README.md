@@ -26,4 +26,4 @@ StartCoroutine(GraduallyChange.To( () => startValue, x => startValue = x, target
 | Parameter | Description |
 | --- | --- |
 | isSmooth | Should interpolation be smooth? |
-| onComplete | Function when interpolation completed. |
+| onComplete | Function to run when interpolation completed. |
