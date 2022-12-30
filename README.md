@@ -1,7 +1,8 @@
 # 📐GraduallyChange
 Gradually change a value to target value
 
-![changingGif](https://user-images.githubusercontent.com/82342866/210013560-c9e7e46d-f719-4893-9111-395deded4b10.gif)
+![changingGif](https://user-images.githubusercontent.com/82342866/210085382-59d22fb2-b8e3-427b-b4fd-967673792c1e.gif)
+
 
 ## 📜 Description
 This function allows you to gradually change a value to a target value in given duration with/without smoothing!
