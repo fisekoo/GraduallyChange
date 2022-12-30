@@ -35,5 +35,5 @@ public static class GraduallyChange
     /// <summary>Linearly interpolate between a and b.</summary>
     /// <param name="t">Interpolation value between values.</param>
     /// <returns>Interpolated value between values</returns>
-    public static float Lerp(float a, float b, float t) => (1 - t) * a + b * t;
+    public static float Lerp(float a, float b, float t) => (1 - t) * a + t * b;
 }
