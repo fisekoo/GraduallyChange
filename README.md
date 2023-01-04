@@ -9,6 +9,7 @@ This function allows you to gradually change a value to a target value in given 
 #### ◤Features 💡
 + ➰Smoothing
 + 7️⃣Setting duration
++ 🎛️Control what happens after change completed!
 + 🙂Use with/without Update function!
 + ➖Works with both negative and positive numbers➕
 
