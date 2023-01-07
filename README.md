@@ -42,7 +42,7 @@ StartCoroutine(GraduallyChange.To( () => startValue, x => startValue = x, target
 + Set value to your end value.
 
 ![image](https://user-images.githubusercontent.com/82342866/211152696-c793aa9b-0ce2-43f8-8f2d-a2c48ad42ab0.png)
-+ Code
++ And then, you can tweak inbetween keyframes however you want!
 ```csharp
 StartCoroutine(GraduallyChange.To( x => startValue = x, curve, loopCount, OnChangeComplete ));
 ```
