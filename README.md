@@ -9,7 +9,7 @@ This function allows you to gradually change a value to a target value in given 
 #### ◤Features 💡
 + ➰Smoothing
 + 7️⃣Setting duration
-+ 〽️Animation Curve support! [Usage](https://github.com/fisekoo/GraduallyChange/edit/main/README.md#%EF%B8%8F-with-animaton-curve)
++ 〽️Animation Curve support! [Usage](https://github.com/fisekoo/GraduallyChange#%EF%B8%8F-with-animaton-curve)
 + 🎛️Control what happens after change completed!
 + 🙂Use with/without Update function!
 + ➖Works with both negative and positive numbers➕
