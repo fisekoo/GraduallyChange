@@ -28,6 +28,11 @@ public static class GraduallyChange
             yield return new UnityEngine.WaitForFixedUpdate();
         }
     }
+    /// <summary>Gradually changes a given value to last animation curve keyframe value.</summary>
+    /// <param name="callback">Lambda for assigning gradually changing value to a variable.</param>
+    /// <param name="curve">Animation curve</param>
+    /// <param name="loopCount">How many times the change will loop.</param>
+    /// <param name="onComplete">Function when interpolation completed.</param>
     public static System.Collections.IEnumerator To(System.Action<float> callback, UnityEngine.AnimationCurve curve, int loopCount = 1, System.Action onComplete = null)
     {
         var lastKeyTime = curve[curve.length - 1].time;
