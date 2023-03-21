@@ -1,13 +1,23 @@
+using System;
+using System.Threading.Tasks;
 public static class GraduallyChange
 {
+    // TODO: STOP ALL TASKS
+    public static Task To(System.Func<float> from, System.Action<float> callback, float to, float duration, bool isSmooth = false)
+    {
+        return ToTask(() => from(), callback, to, duration, isSmooth);
+    }
+    public static Task To(System.Action<float> callback, UnityEngine.AnimationCurve curve, int loopCount = 1)
+    {
+        return ToTask(callback, curve, loopCount);
+    }
     /// <summary>Gradually changes a given value to target value.</summary>
     /// <param name="from">Start value.</param>
     /// <param name="callback">Lambda for assigning gradually changing value to a variable.</param>
     /// <param name="to">Target value.</param>
     /// <param name="duration">How long it will take start value to reach target value? In seconds.</param>
     /// <param name="isSmooth">Should interpolation be smooth?</param>
-    /// <param name="onComplete">Function when interpolation completed.</param>
-    public static System.Collections.IEnumerator To(System.Func<float> from, System.Action<float> callback, float to, float duration, bool isSmooth = false, System.Action onComplete = null)
+    private static async Task ToTask(System.Func<float> from, System.Action<float> callback, float to, float duration, bool isSmooth = false)
     {
         CheckDurationIsLessThanZero(duration);
 
@@ -16,24 +26,22 @@ public static class GraduallyChange
         var fromValue = from();
         while (current != to)
         {
-            t += UnityEngine.Time.fixedDeltaTime;
+            t += UnityEngine.Time.fixedUnscaledDeltaTime;
             current = isSmooth ? LerpSmooth(fromValue, to, t / duration) : Lerp(fromValue, to, (t / duration));
             if (current.IsSimiliarTo(to))
             {
                 callback(to);
-                onComplete?.Invoke();
                 break;
             }
             callback(current);
-            yield return new UnityEngine.WaitForFixedUpdate();
+            await WaitForFixedUpdate();
         }
     }
     /// <summary>Gradually changes a given value to last animation curve keyframe value.</summary>
     /// <param name="callback">Lambda for assigning gradually changing value to a variable.</param>
     /// <param name="curve">Animation curve</param>
     /// <param name="loopCount">How many times the change will loop.</param>
-    /// <param name="onComplete">Function when interpolation completed.</param>
-    public static System.Collections.IEnumerator To(System.Action<float> callback, UnityEngine.AnimationCurve curve, int loopCount = 1, System.Action onComplete = null)
+    public static async Task ToTask(System.Action<float> callback, UnityEngine.AnimationCurve curve, int loopCount = 1)
     {
         var lastKeyTime = curve[curve.length - 1].time;
         CheckDurationIsLessThanZero(lastKeyTime);
@@ -50,7 +58,7 @@ public static class GraduallyChange
         {
             while (true)
             {
-                t = reverse ? t - UnityEngine.Time.fixedDeltaTime : t + UnityEngine.Time.fixedDeltaTime;
+                t = reverse ? t - UnityEngine.Time.fixedUnscaledDeltaTime : t + UnityEngine.Time.fixedUnscaledDeltaTime;
                 current = LerpSmooth(curve.Evaluate(0), curve.Evaluate(t), t / lastKeyTime);
                 if (t.IsSimiliarTo(targetTime))
                 {
@@ -58,12 +66,20 @@ public static class GraduallyChange
                     break;
                 }
                 callback(current);
-                yield return new UnityEngine.WaitForFixedUpdate();
+                await WaitForFixedUpdate();
             }
             reverse = !reverse;
             targetTime = Max(lastKeyTime - t, 0);
         }
-        onComplete?.Invoke();
+    }
+    public static async Task WaitForFixedUpdate()
+    {
+        await Task.Delay((int)(UnityEngine.Time.fixedUnscaledDeltaTime * 1000));
+    }
+    public static async void OnComplete(this Task task, System.Action action)
+    {
+        await task;
+        action.Invoke();
     }
     /// <summary>Checks if a and b similiar to eachother by delta.</summary>
     /// <param name="delta">Minimum difference between numbers.</param>
