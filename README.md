@@ -21,9 +21,9 @@ This function allows you to gradually change a value to a target value in given 
 
 + Open a script where you want to change number
 ```csharp
-StartCoroutine(GraduallyChange.To( () => startValue, x => startValue = x, targetValue, duration, isSmooth, OnChangeComplete ));
+GraduallyChange.To( () => startValue, x => startValue = x, targetValue, duration, isSmooth, OnChangeComplete );
 ```
-> isSmooth and OnChangeComplete is optional
+> isSmooth is optional
 
 ### 〽️ With Animaton Curve
 ![curveGif](https://user-images.githubusercontent.com/82342866/211152375-80bd6a0c-531c-480d-8b08-26c5887d167e.gif)
@@ -47,13 +47,12 @@ StartCoroutine(GraduallyChange.To( () => startValue, x => startValue = x, target
 ![curveChangeGif](https://user-images.githubusercontent.com/82342866/211153507-abbd7017-ed82-4935-ba21-16011e284070.gif)
 
 ```csharp
-StartCoroutine(GraduallyChange.To( x => startValue = x, curve, loopCount, OnChangeComplete ));
+GraduallyChange.To( x => startValue = x, curve, loopCount, OnChangeComplete );
 ```
-> loopCount and onChangeComplete is optional
+> loopCount is optional
 
 ## Optional parameters
 | Parameter | Description |
 | --- | --- |
 | isSmooth | Should interpolation be smooth? |
 | loopCount | How many times the change will loop. |
-| onComplete | Function to run when interpolation completed. |
