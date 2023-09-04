@@ -21,7 +21,7 @@ This function allows you to gradually change a value to a target value in given 
 
 + Open a script where you want to change number
 ```csharp
-GraduallyChange.To( () => startValue, x => startValue = x, targetValue, duration, isSmooth, OnChangeComplete );
+GraduallyChange.To( () => startValue, x => startValue = x, targetValue, duration, isSmooth);
 ```
 > isSmooth is optional
 
@@ -47,7 +47,7 @@ GraduallyChange.To( () => startValue, x => startValue = x, targetValue, duration
 ![curveChangeGif](https://user-images.githubusercontent.com/82342866/211153507-abbd7017-ed82-4935-ba21-16011e284070.gif)
 
 ```csharp
-GraduallyChange.To( x => startValue = x, curve, loopCount, OnChangeComplete );
+GraduallyChange.To( x => startValue = x, curve, loopCount );
 ```
 > loopCount is optional
 
